@@ -1,9 +1,13 @@
-class Copia:
+class Copia():
     cod=None
     dataAq=None
     estado=None
     listaE=None
+    quant=None
     
+    def __init__(self):
+        pass
+   
     def setCod(self,cod):
         self.cod=cod
     
@@ -28,9 +32,16 @@ class Copia:
     def getListaE(self):
         return self.listaE
     
-    def relatorioFilmeQuant(self,titulo,cod):
-        list=[self.titulo,self.cod]
-        print list
+    def setQuant(self,quant):
+        self.quant=quant
+        
+    def getQuant(self):
+        return self.quant
+    
+    def relatorioFilmeQuant(self,cod,quant):
+        list=[self.cod,self.quant]
+        return list
+    
     
     
     

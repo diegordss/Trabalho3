@@ -7,6 +7,7 @@ class Filme:
     diretor=None
     artista1=None
     artista2=None
+  
     
     def setCod(self,cod):
         self.cod=cod
@@ -56,17 +57,20 @@ class Filme:
     def getArtista2(self):
         return self.artista2
     
-    def relatorioFilmeGenero(self,titulo,genero):
-        list=[self.titulo,self.genero]
+   
+    def relatorioFilmeGenero(self,cod,titulo,genero):
+        list=[self.cod,self.titulo,self.genero]
         return list
     
-    def relatorioFilmeDiretor(self,titulo,diretor):
-        list=[self.titulo,self.diretor]
+    def relatorioFilmeDiretor(self,cod,titulo,diretor):
+        list=[self.cod,self.titulo,self.diretor]
         return list
     
-    def relatorioFilmeArtista(self,titulo,artista1):
-        list=[self.titulo,self.artista1]
+    def relatorioFilmeArtista(self,cod,titulo,artista1):
+        list=[self.cod,self.titulo,self.artista1]
         return list
+    
+  
 
 
 

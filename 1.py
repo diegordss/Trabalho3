@@ -2,6 +2,8 @@ import unittest
 from Socio import Socio
 from Filme import Filme
 from Copia import Copia
+from Diretor import Diretor
+from Artista import Artista
 
 class TestSocio(unittest.TestCase):
     
@@ -135,29 +137,33 @@ class TestFilme(unittest.TestCase):
         
         
     def testRelatorioFilmeGenero(self):
+        cod=self.filme.getCod()
         tit=self.filme.getTitulo()
         gen=self.filme.getGenero()
-        self.filme.relatorioFilmeGenero(tit, gen)
-        
+        relFilmeGenero=self.filme.relatorioFilmeGenero(cod,tit,gen)
+        assert relFilmeGenero != None,"Relatorio nao existe"
         
     def testRelatorioFilmeDiretor(self):
+        cod=self.filme.getCod()
         tit=self.filme.getTitulo()
         dir=self.filme.getDiretor()
-        self.filme.relatorioFilmeDiretor(tit, dir)
+        relFilmeDiretor=self.filme.relatorioFilmeDiretor(cod,tit,dir)
+        assert relFilmeDiretor != None,"Relatorio nao existe"
         
     def testRelatorioFilmeArtista(self):
+        cod=self.filme.getCod()
         tit=self.filme.getTitulo()
         art1=self.filme.getArtista1()
-        self.filme.relatorioFilmeArtista(tit, art1)
-
-
+        relFilmeArtista=self.filme.relatorioFilmeArtista(cod,tit,art1)
+        assert relFilmeArtista != None,"Relatorio nao existe"
+        
 class TestCopia(unittest.TestCase):  
     
     def setUp(self):
         self.copia = Copia()
               
     def testCopiaExiste(self):
-        assert self.copia != None, "Copia esta vazio"
+        assert self.copia != None, "Copia nao existe"
             
     def testInsereCodigo(self):
         self.copia.setCod(001)
@@ -197,12 +203,103 @@ class TestCopia(unittest.TestCase):
         listaE=self.copia.getListaE()
         assert listaE != None,"Lista de Emprestimos esta vazio"
         
-    def testRelatorioFilmeQuant(self):
-        tit=self.filme.getTitulo()
+    def testRelatorioFilmeQuant(self):        
         cod=self.copia.getCod()
-        self.copia.relatorioFilmeQuant(tit, cod)
-    
+        quant=self.copia.getQuant()
+        self.copia.relatorioFilmeQuant(cod,quant)
 
-        
+
+class TestDiretor(unittest.TestCase):  
+    
+    def setUp(self):
+        self.diretor = Diretor()
+              
+    def testCopiaExiste(self):
+        assert self.diretor != None, "Diretor nao existe"
+            
+    def testInsereCodigo(self):
+        self.diretor.setCodD(001)
+        assert self.diretor.codD != None,"Codigo esta vazio"
+    
+    def testInsereNomeDiretor(self):
+        self.diretor.setnomeD("Pedro Luiz")
+        assert self.diretor.nomeD != None,"Nome do Diretor esta vazio"
+    
+    def testInserePaisOrigem(self):
+        self.diretor.setpaisOrigem("Estados Unidos")
+        assert self.diretor.paisOrigem != None,"Pais de Origem esta vazio"
+    
+    def testInsereDataNascimento(self):
+        self.diretor.setdataNascimento("26/05/1984")
+        assert self.diretor.dataNascimento != None,"Data de Nascimento esta vazio"
+    
+     
+    
+    def testImprimeCodigo(self):
+        self.diretor.setCodD(001)
+        cod=self.diretor.getCodD()
+        assert cod != None,"Codigo esta vazio"
+    
+    def testImprimeNomeDiretor(self):
+        self.diretor.setnomeD("Pedro Luiz")
+        nomeD=self.diretor.getnomeD()
+        assert nomeD != None,"Nome do Diretor esta vazio"
+    
+    def testImprimePaisOrigem(self):
+        self.diretor.setpaisOrigem("Estados Unidos")
+        paisOrigem=self.diretor.getpaisOrigem()
+        assert paisOrigem != None,"Pais de Origem esta vazio"
+    
+    def testImprimeDataNascimento(self):
+        self.diretor.setdataNascimento("26/05/1984")
+        dataNascimento=self.diretor.getdataNascimento()
+        assert dataNascimento != None,"Data de Nascimento esta vazio"
+
+class TestArtista(unittest.TestCase):  
+    
+    def setUp(self):
+        self.artista = Artista()
+              
+    def testCopiaExiste(self):
+        assert self.artista != None, "Artista nao existe"
+            
+    def testInsereCodigo(self):
+        self.artista.setCodA(001)
+        assert self.artista.codA != None,"Codigo esta vazio"
+    
+    def testInsereNomeArtista(self):
+        self.artista.setnomeA("Pedro Luiz")
+        assert self.artista.nomeA != None,"Nome do Artista esta vazio"
+    
+    def testInserePaisOrigem(self):
+        self.artista.setpaisOrigem("Estados Unidos")
+        assert self.artista.paisOrigem != None,"Pais de Origem esta vazio"
+    
+    def testInsereDataNascimento(self):
+        self.artista.setdataNascimento("26/05/1984")
+        assert self.artista.dataNascimento != None,"Data de Nascimento esta vazio"
+    
+     
+    
+    def testImprimeCodigo(self):
+        self.artista.setCodA(001)
+        cod=self.artista.getCodA()
+        assert cod != None,"Codigo esta vazio"
+    
+    def testImprimeNomeDiretor(self):
+        self.artista.setnomeA("Pedro Luiz")
+        nomeA=self.artista.getnomeA()
+        assert nomeA != None,"Nome do Artista esta vazio"
+    
+    def testImprimePaisOrigem(self):
+        self.artista.setpaisOrigem("Estados Unidos")
+        paisOrigem=self.artista.getpaisOrigem()
+        assert paisOrigem != None,"Pais de Origem esta vazio"
+    
+    def testImprimeDataNascimento(self):
+        self.artista.setdataNascimento("26/05/1984")
+        dataNascimento=self.artista.getdataNascimento()
+        assert dataNascimento != None,"Data de Nascimento esta vazio"
+     
 if  __name__=="__main__":
     unittest.main() 
