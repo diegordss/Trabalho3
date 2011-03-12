@@ -55,3 +55,21 @@ class Filme:
         
     def getArtista2(self):
         return self.artista2
+    
+    def relatorioFilmeGenero(self,titulo,genero):
+        list=[self.titulo,self.genero]
+        return list
+    
+    def relatorioFilmeDiretor(self,titulo,diretor):
+        list=[self.titulo,self.diretor]
+        return list
+    
+    def relatorioFilmeArtista(self,titulo,artista1):
+        list=[self.titulo,self.artista1]
+        return list
+
+
+
+
+
+

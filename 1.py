@@ -132,6 +132,23 @@ class TestFilme(unittest.TestCase):
         self.filme.setArtista2("A2")
         artista2=self.filme.getArtista2()
         assert artista2 != None,"Artista2 nao existe"
+        
+        
+    def testRelatorioFilmeGenero(self):
+        tit=self.filme.getTitulo()
+        gen=self.filme.getGenero()
+        self.filme.relatorioFilmeGenero(tit, gen)
+        
+        
+    def testRelatorioFilmeDiretor(self):
+        tit=self.filme.getTitulo()
+        dir=self.filme.getDiretor()
+        self.filme.relatorioFilmeDiretor(tit, dir)
+        
+    def testRelatorioFilmeArtista(self):
+        tit=self.filme.getTitulo()
+        art1=self.filme.getArtista1()
+        self.filme.relatorioFilmeArtista(tit, art1)
 
 
 class TestCopia(unittest.TestCase):  
@@ -179,6 +196,11 @@ class TestCopia(unittest.TestCase):
         self.copia.setListaE(['numIns','dataE','dataD','valorP'])
         listaE=self.copia.getListaE()
         assert listaE != None,"Lista de Emprestimos esta vazio"
+        
+    def testRelatorioFilmeQuant(self):
+        tit=self.filme.getTitulo()
+        cod=self.copia.getCod()
+        self.copia.relatorioFilmeQuant(tit, cod)
     
 
         

@@ -27,3 +27,11 @@ class Copia:
         
     def getListaE(self):
         return self.listaE
+    
+    def relatorioFilmeQuant(self,titulo,cod):
+        list=[self.titulo,self.cod]
+        print list
+    
+    
+    
+
