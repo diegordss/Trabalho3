@@ -1,5 +1,5 @@
 class Socio:
-    numIns=None
-    nome=None
-    end=None
-    tel=None
+    numIns=123
+    nome="Luiz Inacio Lula"
+    end="Brasilia"
+    tel=27238644

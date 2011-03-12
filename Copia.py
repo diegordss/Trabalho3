@@ -1,5 +1,5 @@
 class Copia:
-    cod=None
-    dataAq=None
-    estado=None
-    listaE=None
+    cod=001
+    dataAq=2010
+    estado="bom"
+    listaE=['numIns','dataE','dataD','valorP']
