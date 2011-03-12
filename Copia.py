@@ -1,2 +1,5 @@
 class Copia:
-    pass
+    cod=None
+    dataAq=None
+    estado=None
+    listaE=None

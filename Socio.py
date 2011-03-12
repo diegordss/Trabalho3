@@ -1,2 +1,5 @@
 class Socio:
-    pass
+    numIns=None
+    nome=None
+    end=None
+    tel=None
