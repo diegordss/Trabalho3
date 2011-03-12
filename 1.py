@@ -1,11 +1,14 @@
 import unittest
+from Socio import Socio
+from Filme import Filme
+from Copia import Copia
 
 class TestSocio(unittest.TestCase):
     def testSocioExiste(self):
         socio = Socio()
         assert socio != None, "Socio nao existe"
 
-class TestFilme(unittest.TestCase):  
+class TestFilme(unittest.TestCase): 
     def testFilmeExiste(self):
         filme = Filme()
         assert filme != None, "Filme nao existe"
