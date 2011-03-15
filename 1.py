@@ -1,9 +1,10 @@
 import unittest
+from Artista import Artista
+from Diretor import Diretor
 from Socio import Socio
 from Filme import Filme
 from Copia import Copia
-from Diretor import Diretor
-from Artista import Artista
+from Emprestimo import Emprestimo
 
 class TestSocio(unittest.TestCase):
     
@@ -177,12 +178,6 @@ class TestCopia(unittest.TestCase):
         self.copia.setEstado("bom")
         assert self.copia.estado != None,"Estado esta vazio"
     
-    def testInsereListaEmprestimos(self):
-        self.copia.setListaE(['numIns','dataE','dataD','valorP'])
-        assert self.copia.listaE != None,"Lista de Emprestimos esta vazio"
-     
-     
-        
     def testImprimeCodigo(self):  
         self.copia.setCod(001)
         cod=self.copia.getCod()
@@ -197,17 +192,14 @@ class TestCopia(unittest.TestCase):
         self.copia.setEstado("bom")
         estado=self.copia.getEstado()
         assert estado != None,"Estado esta vazio"
-    
-    def testImprimeListaEmprestimos(self):
-        self.copia.setListaE(['numIns','dataE','dataD','valorP'])
-        listaE=self.copia.getListaE()
-        assert listaE != None,"Lista de Emprestimos esta vazio"
-        
-    def testRelatorioFilmeQuant(self):        
+            
+    def testRelatorioFilmeQuant(self): 
+        self.copia.setCod(203)
+        self.copia.setQuant(7)
         cod=self.copia.getCod()
         quant=self.copia.getQuant()
-        self.copia.relatorioFilmeQuant(cod,quant)
-
+        relFQ=self.copia.relatorioFilmeQuant(cod,quant)
+        assert relFQ != [None,None], "Relatorio esta vazio"
 
 class TestDiretor(unittest.TestCase):  
     
@@ -300,6 +292,49 @@ class TestArtista(unittest.TestCase):
         self.artista.setdataNascimento("26/05/1984")
         dataNascimento=self.artista.getdataNascimento()
         assert dataNascimento != None,"Data de Nascimento esta vazio"
-     
+
+class TestEmprestimo(unittest.TestCase):  
+        
+    def setUp(self):
+        self.emprestimo = Emprestimo()
+              
+    def testEmprestimoExiste(self):
+        assert self.emprestimo != None, "Emprestimo nao existe"
+            
+    def testInsereCodigo(self):
+        self.emprestimo.setCodE(001)
+        assert self.emprestimo.codE != None,"Codigo esta vazio"
+    
+    def testInsereDataEmprestimo(self):
+        self.emprestimo.setdataE("23/02/2011")
+        assert self.emprestimo.dataE != None,"Data de Emprestimo esta vazio"
+    
+    def testInsereDataDevolucao(self):
+        self.emprestimo.setdataD("26/02/2011")
+        assert self.emprestimo.dataD != None,"Data de Devolucao esta vazio"
+   
+    def testImprimeCodigo(self):
+        self.emprestimo.setCodE(001)
+        cod=self.emprestimo.getCodE()
+        assert cod != None,"Codigo esta vazio"
+    
+    def testImprimeDataEmprestimo(self):
+        self.emprestimo.setdataE("23/02/2011")
+        dataE=self.emprestimo.getdataE()
+        assert dataE != None,"Data de Emprestimo esta vazio"
+    
+    def testImprimeDataDevolucao(self):
+        self.emprestimo.setdataD("26/02/2011")
+        dataD=self.emprestimo.getdataD()
+        assert dataD != None,"Data de Devolucao esta vazio"
+          
+        
+    def testDevolucao(self):
+        lFinal=self.emprestimo.devolver()        
+        pFinal=lFinal[0]  
+        self.assertEqual(pFinal,self.emprestimo.preco,msg="Erro: Preco Final com Valores Diferentes")
+ 
+   
+ 
 if  __name__=="__main__":
     unittest.main() 

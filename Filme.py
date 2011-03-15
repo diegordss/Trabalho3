@@ -70,7 +70,8 @@ class Filme:
         list=[self.cod,self.titulo,self.artista1]
         return list
     
-  
+   
+   
 
 
 
