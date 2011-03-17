@@ -8,7 +8,8 @@ class Principal(Emprestimo,Copia):
     #Testar metodo devolver
     
     #emp.devolver()
-        
+    #emp.devolver()
+         
      
     #Testar metodo alugar
     
@@ -16,7 +17,11 @@ class Principal(Emprestimo,Copia):
     
     #Testar metodo cadastro de filme
     
-    cadF.cadastrarFilme()
+    #cadF.cadastrarFilme()
+    
+    #Testar status do socio
+    
+    #emp.socioStatus(002)
     
     
     

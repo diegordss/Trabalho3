@@ -31,7 +31,6 @@ class TestSocio(unittest.TestCase):
         assert self.socio.tel != None,"Telefone esta vazio"
         
         
-        
     def testImprimeNumInscricao(self):
         self.socio.setNumIns(1234)
         numInsc= self.socio.getNumIns()
@@ -200,6 +199,8 @@ class TestCopia(unittest.TestCase):
         quant=self.copia.getQuant()
         relFQ=self.copia.relatorioFilmeQuant(cod,quant)
         assert relFQ != [None,None], "Relatorio esta vazio"
+        
+   
 
 class TestDiretor(unittest.TestCase):  
     
@@ -326,15 +327,30 @@ class TestEmprestimo(unittest.TestCase):
     def testImprimeDataDevolucao(self):
         self.emprestimo.setdataD("26/02/2011")
         dataD=self.emprestimo.getdataD()
-        assert dataD != None,"Data de Devolucao esta vazio"
-          
+        assert dataD != None,"Data de Devolucao esta vazio"  
         
     def testDevolucao(self):
         lFinal=self.emprestimo.devolver()        
         pFinal=lFinal[0]  
-        self.assertEqual(pFinal,self.emprestimo.preco,msg="Erro: Preco Final com Valores Diferentes")
- 
-   
+        pFinal=int(pFinal)
+        self.assertEqual(pFinal,self.emprestimo.preco,msg="Erro: Preco Final com Valores Diferentes") 
+        
+    def testCopiaRuim(self):
+        lFinal=self.emprestimo.devolver()
+        print "teste lista"
+        print lFinal
+        listaEstadoR=lFinal[2]
+        if listaEstadoR=="ruim":
+            self.assertNotEqual(self.emprestimo.listaEstadoR,None,msg="Erro: Socio Inadimplente")
+       
+    def testSocioInadimplente(self):
+        pagar=self.emprestimo.socioStatus(001)
+        if pagar=="nao":
+            self.assertNotEqual(self.emprestimo.ListSocioI,None,msg="Erro: Socio Inadimplente")
+            
+        
+    
+            
  
 if  __name__=="__main__":
     unittest.main() 

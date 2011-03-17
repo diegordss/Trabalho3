@@ -1,13 +1,16 @@
 from Socio import Socio
+from Copia import Copia
 
-class Emprestimo(Socio):
+class Emprestimo():
     codE=None
     dataE=None
     dataD=None
-    pago=None
+    valorPago=None
     limiteT=None
     preco=None
     tipo=None
+    listaEstadoR=[]
+    ListSocioI=[]
     
     def __init__(self):
         pass
@@ -29,15 +32,7 @@ class Emprestimo(Socio):
     
     def getdataD(self):
         return self.dataD
-    
       
-    
-    def setpago(self,pago):
-        self.pago=pago
-    
-    def getpago(self):
-        return self.pago
-    
     
     def setlimiteT(self,limiteT):
         self.limiteT=limiteT
@@ -54,11 +49,19 @@ class Emprestimo(Socio):
         p=self.preco
         return p
     
+    def addMulta(self,preco):
+        self.preco=preco 
+        return self.preco
+    
     def getpreco(self):
         return self.preco
-
      
-     
+    def pagamento(self,valorPagar):
+         #Pagamento de Emprestimo
+         self.preco=0
+         self.valorPago=1
+         return self.valorPago 
+         
     
     def alugar(self):
         #Informar numero de inscricao de socio
@@ -83,31 +86,61 @@ class Emprestimo(Socio):
      
      
     def devolver(self):
-        multa=5
-        self.setpreco("Lancamento")
-        preco=self.getpreco()
-        
+        copia=Copia()
+        cod = raw_input("Digite o codigo da copia:")
+
+        estado = raw_input("Informe qual e o estado da copia(bom/ruim)")
+        if estado=="ruim":
+            self.listaEstadoR=self.listaEstadoR+[cod]
+            print "Lista Atualizada"
+            print self.listaEstadoR
+            copia.setEstado("ruim")
+    
         dataDev = raw_input("Digite a data da devolucao:")
         self.setdataD(dataDev)
-        dataEmprestimo=self.getdataE();
+        dataEmprestimo=self.getdataD();
+        print dataEmprestimo
         
         #Informar quantidade de horas do aluguel
         
         limiteT = raw_input("Digite a quantidade de horas que o socio ficou com o filme")
         limiteT=int(limiteT)
         self.setlimiteT(limiteT)
-                      
-        if limiteT>=72:
-            self.getpreco()
-            print "Multa sera acrescentada" 
-            precoFinal=self.preco=self.preco+multa
-            list=[precoFinal,dataEmprestimo]
+        
+        multa=5
+        self.setpreco("Lancamento")
+        preco=self.getpreco()       
+        if limiteT>=72: 
+            print "Multa sera acrescentada"
+            precoFinal=self.addMulta(preco+multa) 
+            list=[precoFinal,dataEmprestimo,estado]
+            print list
             return list
         else:
             print "Multa nao sera acrescentada" 
-            list=[preco,dataEmprestimo]  
+            list=[preco,dataEmprestimo,estado]
+            print list  
             return list
     
+    
+    def socioStatus(self,numS):
+        ListSocioI=0
+        socio = Socio()
+        socio.setNumIns(numS)
+        numIns=socio.getNumIns()
+        
+        valor=self.devolver()
+        
+        pagar = raw_input("Deseja pagar o emprestimo(sim/nao)")
+        if pagar=="sim":
+            pago=self.pagamento(valor)
+            print "Socio efetuou o pagamento com sucesso"
+            return pagar
+        else:
+            print "Socio Inadimplente"
+            self.ListSocioI=self.ListSocioI+[numIns]
+            return pagar
+            
          
   
     
