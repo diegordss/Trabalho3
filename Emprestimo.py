@@ -11,6 +11,7 @@ class Emprestimo():
     tipo=None
     listaEstadoR=[]
     ListSocioI=[]
+    ListEmprestimo=[]
     
     def __init__(self):
         pass
@@ -108,7 +109,8 @@ class Emprestimo():
         self.setlimiteT(limiteT)
         
         multa=5
-        self.setpreco("Lancamento")
+        tipo = raw_input("Digite o tipo do filme(Lancamento/Comum)")
+        self.setpreco(tipo)
         preco=self.getpreco()       
         if limiteT>=72: 
             print "Multa sera acrescentada"
@@ -141,6 +143,16 @@ class Emprestimo():
             self.ListSocioI=self.ListSocioI+[numIns]
             return pagar
             
+            
+    def listaEmprestimo(self):
+        listA=self.alugar()
+        listD=self.devolver()
+        listD.pop(2)
+        print listD
+        listE=listA+listD
+        print listE
+        return listE
+        
          
   
     

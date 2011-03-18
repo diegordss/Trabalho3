@@ -6,6 +6,8 @@ from Filme import Filme
 from Copia import Copia
 from Emprestimo import Emprestimo
 
+
+
 class TestSocio(unittest.TestCase):
     
     def setUp(self):
@@ -50,6 +52,12 @@ class TestSocio(unittest.TestCase):
         self.socio.setTel(27238644)
         tel= self.socio.getTel()       
         assert tel != None,"Telefone esta vazio"
+        
+    def testCadastrarSocio(self):
+        listS=self.socio.cadastrarSocio()
+        print listS
+        self.assertNotEqual(listS,None,msg="Erro: Lista esta vazia")
+       
 
 
 class TestFilme(unittest.TestCase): 
@@ -200,6 +208,11 @@ class TestCopia(unittest.TestCase):
         relFQ=self.copia.relatorioFilmeQuant(cod,quant)
         assert relFQ != [None,None], "Relatorio esta vazio"
         
+    
+    def testCadastrarFilme(self):
+        listF=self.socio.cadastrarSocio()
+        self.assertNotEqual(listF,None,msg="Erro: Lista esta vazia")
+        
    
 
 class TestDiretor(unittest.TestCase):  
@@ -347,10 +360,24 @@ class TestEmprestimo(unittest.TestCase):
         pagar=self.emprestimo.socioStatus(001)
         if pagar=="nao":
             self.assertNotEqual(self.emprestimo.ListSocioI,None,msg="Erro: Socio Inadimplente")
-            
-        
     
+
             
+    def testListaEmprestimo(self):
+        listE=self.emprestimo.listaEmprestimo()
+        numS=listE[0]
+        dataE=listE[1]
+        precoF=listE[2]
+        dataD=listE[3]
+        self.assertNotEqual(numS,None,msg="Erro: Valor esta Vazio")
+        self.assertNotEqual(dataE,None,msg="Erro: Valor esta Vazio")
+        self.assertNotEqual(precoF,None,msg="Erro: Valor esta Vazio")
+        self.assertNotEqual(dataD,None,msg="Erro: Valor esta Vazio")
+        
+
+
+
+    
  
 if  __name__=="__main__":
     unittest.main() 

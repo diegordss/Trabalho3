@@ -4,6 +4,29 @@ class Socio:
     end=None
     tel=None
     
+    def cadastrarSocio(self):
+        while 1:
+            cont=0
+            numIns = raw_input("Digite o numero de inscricao do socio:")
+            self.setNumIns(numIns)
+            
+            nome = raw_input("Digite o nome do socio:")
+            self.setNome(nome)
+            
+            end = raw_input("Digite o endereco do socio:")
+            self.setEnd(end)
+            
+            tel = raw_input("Digite o telefone do socio:")
+            self.setTel(tel)
+            
+            listaCadastro=[numIns,nome,end,tel]
+            print listaCadastro
+            ++cont
+            opcaoContinuar = raw_input("Voce deseja continuar a cadastrar?(sim/nao)")
+            if opcaoContinuar=='nao':break
+        return listaCadastro
+
+    
     def setNumIns(self,numIns):
         self.numIns=numIns
     

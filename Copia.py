@@ -48,7 +48,7 @@ class Copia(Filme):
             listaCadastro=[codEscolhido,codCopEscolhido,dataAqEscolhido,codCopia,tituloEscolhido,duracaoEscolhida,anoEscolhido,generoEscolhido,diretorEscolhido,artista1Escolhido,artista2Escolhido]
             print listaCadastro
             ++cont
-            opcaoContinuar = raw_input("Voce deseja continuar a cadastrar?")
+            opcaoContinuar = raw_input("Voce deseja continuar a cadastrar?(sim/nao)")
             if opcaoContinuar=='nao':break  
    
     def setCod(self,cod):
