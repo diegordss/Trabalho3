@@ -9,7 +9,6 @@ class Principal(Emprestimo,Copia):
     soc=Socio()
     film=Filme()
     
-    
     #Chamar metodo Relatorio de filmes por genero
     
     #film.relatorioFilmeGenero(001,"Avatar","Ficcao Cientifica")

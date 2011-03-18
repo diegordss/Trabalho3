@@ -58,10 +58,10 @@ class Emprestimo():
         return self.preco
      
     def pagamento(self,valorPagar):
-         #Pagamento de Emprestimo
-         self.preco=0
-         self.valorPago=1
-         return self.valorPago 
+        #Pagamento de Emprestimo
+        self.preco=0
+        self.valorPago=1
+        return self.valorPago 
          
     
     def alugar(self):
@@ -126,22 +126,23 @@ class Emprestimo():
     
     
     def socioStatus(self,numS):
-        ListSocioI=0
         socio = Socio()
         socio.setNumIns(numS)
         numIns=socio.getNumIns()
         
         valor=self.devolver()
+        print valor
         
-        pagar = raw_input("Deseja pagar o emprestimo(sim/nao)")
-        if pagar=="sim":
-            pago=self.pagamento(valor)
+        pago = raw_input("Deseja pagar o emprestimo(sim/nao)")
+        if pago=="sim":
+            self.pagamento(valor)
             print "Socio efetuou o pagamento com sucesso"
-            return pagar
+            return pago
         else:
             print "Socio Inadimplente"
             self.ListSocioI=self.ListSocioI+[numIns]
-            return pagar
+            print 
+            return pago
             
             
     def listaEmprestimo(self):

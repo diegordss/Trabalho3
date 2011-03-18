@@ -50,6 +50,8 @@ class Copia(Filme):
             ++cont
             opcaoContinuar = raw_input("Voce deseja continuar a cadastrar?(sim/nao)")
             if opcaoContinuar=='nao':break  
+        return listaCadastro
+
    
     def setCod(self,cod):
         self.cod=cod
@@ -77,6 +79,7 @@ class Copia(Filme):
     
     def relatorioFilmeQuant(self,cod,quant):
         list=[self.cod,self.quant]
+        print list
         return list
         
     
